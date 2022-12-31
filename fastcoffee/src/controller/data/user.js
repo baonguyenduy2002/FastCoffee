@@ -1,4 +1,4 @@
 export const userModel = {
-  userId: "qwerty",
-  password: "123123",
+  userId: "fastcoffee",
+  password: "123",
 };
