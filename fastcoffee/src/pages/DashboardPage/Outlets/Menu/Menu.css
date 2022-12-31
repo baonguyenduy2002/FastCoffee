@@ -1,0 +1,9 @@
+.ManaTaskContainer {
+    position: flex;
+    width: 1318px;
+    height: 890px;
+    left: 165px;
+    top: 65px;
+    background-color: #FCFBFF;
+    border-radius: 20px 20px 20px 20px;
+}

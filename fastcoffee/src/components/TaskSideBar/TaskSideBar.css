@@ -1,0 +1,47 @@
+.Management {
+	width: 1318px;
+	height: 890px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.TaskSideBar {
+	width: 112px;
+	height: 890px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+	background-color: #f3f5f9;
+}
+
+.TaskSidebar-button {
+	width: 112px;
+	height: 445px;
+	cursor: pointer;
+}
+
+.TaskSidebar-button:hover {
+	background-color: #eaf9f3;
+}
+
+.TaskSidebar-button:focus {
+	background-color: #315c57;
+}
+
+.button1 {
+	border-radius: 20px 0px 0px 0px;
+}
+
+.button2 {
+	border-radius: 0px 0px 0px 20px;
+}
+
+.window {
+	width: 1152px;
+	height: 772px;
+	margin-left: 29px;
+}

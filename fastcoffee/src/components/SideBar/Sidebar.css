@@ -1,0 +1,20 @@
+.Sidebar {
+	width: 131px;
+	height: 982px;
+	background: #fcfbff;
+	border-radius: 20px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.Sidebar-button {
+	width: fit-content;
+	height: fit-content;
+	margin-bottom: 48px;
+	border-radius: 50%;
+	border: #FFFFFF;
+	cursor: pointer;
+}
