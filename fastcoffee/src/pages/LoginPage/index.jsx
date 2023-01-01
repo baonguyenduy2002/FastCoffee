@@ -3,7 +3,6 @@ import { ImageBackground } from "react-native";
 import { useNavigate } from "react-router-dom";
 
 import login_background from "../../assets/image/login_background.svg";
-import login_background1 from "../../assets/image/login_background1.jpg"
 import "./LoginPage.css";
 import { login } from "../../controller/service/auth";
 
@@ -18,10 +17,9 @@ function LoginPage() {
 		login(userId, password, rememberMe);
 		setTimeout(navigate("/dashboard"), 2000);
 	};
-
+	const login_background1 = require("../../assets/image/login_background1.jpg");
 	return (
 		<div className="container">
-			<ImageBackground source={login_background1} resizeMode="cover"></ImageBackground>
 			<h1 className="title">Sign in</h1>
 			<p className="normal-text">Sign in and start managing your shop!</p>
 

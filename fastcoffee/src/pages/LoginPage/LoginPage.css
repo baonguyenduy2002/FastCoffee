@@ -6,7 +6,7 @@
 .container {
 	width: 100%;
 	height: 100%;
-
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -15,6 +15,7 @@
 
 .login_background {
 	display: flex;
+	object-fit: cover;
 }
 
 .title {
@@ -98,7 +99,7 @@
 }
 
 .form-button:hover {
-	background-color: #93caac;
+	background-color: #918677;
 	color: var(--secondary-color);
 }
 
