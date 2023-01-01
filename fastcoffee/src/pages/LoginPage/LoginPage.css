@@ -1,7 +1,12 @@
+:root {
+	--main-color: #674736;
+	--secondary-color: #BD9A7A;
+} 
+
 .container {
 	width: 100%;
 	height: 100%;
-
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -10,18 +15,19 @@
 
 .login_background {
 	display: flex;
+	object-fit: cover;
 }
 
 .title {
 	font-size: 64px;
 	font-weight: normal;
-	color: #315c57;
+	color: var(--main-color);
 }
 
 .normal-text {
 	font-size: 22px;
 	font-weight: normal;
-	color: #315c57;
+	color: var(--main-color);
 }
 
 .form {
@@ -40,9 +46,9 @@
 .form-input {
 	width: 402px;
 	height: 65px;
-	background-color: #315c57;
+	background-color: var(--main-color);
 
-	color: #eaf9f3;
+	color: var(--secondary-color);
 	font-size: 22px;
 	border-radius: 10px;
 	border-width: 0px;
@@ -52,16 +58,16 @@
 }
 
 .form-input::placeholder {
-	color: #eaf9f3;
+	color: var(--secondary-color);
 }
 
 .form-input:focus {
-	background-color: #eaf9f3;
-	color: #315c57;
+	background-color: var(--secondary-color);
+	color: var(--main-color);
 }
 
 .form-input:focus::placeholder {
-	color: #315c57;
+	color: var(--main-color);
 }
 
 .remember-me {
@@ -82,9 +88,9 @@
 .form-button {
 	width: 450px;
 	height: 65px;
-	background-color: #eaf9f3;
+	background-color: var(--secondary-color);
 
-	color: #315c57;
+	color: var(--main-color);
 	font-size: 22px;
 	border-radius: 10px;
 	border-width: 0px;
@@ -93,11 +99,11 @@
 }
 
 .form-button:hover {
-	background-color: #93caac;
-	color: #eaf9f3;
+	background-color: #918677;
+	color: var(--secondary-color);
 }
 
 .form-button:active {
-	background-color: #315c57;
-	color: #eaf9f3;
+	background-color: var(--main-color);
+	color: var(--secondary-color);
 }

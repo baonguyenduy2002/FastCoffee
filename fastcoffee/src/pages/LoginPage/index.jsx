@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ImageBackground } from "react-native";
 import { useNavigate } from "react-router-dom";
 
 import login_background from "../../assets/image/login_background.svg";
@@ -16,11 +17,11 @@ function LoginPage() {
 		login(userId, password, rememberMe);
 		setTimeout(navigate("/dashboard"), 2000);
 	};
-
+	const login_background1 = require("../../assets/image/login_background1.jpg");
 	return (
 		<div className="container">
 			<h1 className="title">Sign in</h1>
-			<p className="normal-text">Sign in and start managing your employee!</p>
+			<p className="normal-text">Sign in and start managing your shop!</p>
 
 			<form className="form">
 				<input
