@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../../../../controller/service/auth";
 
 function Setting() {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     logout();
+    setTimeout(navigate("/"), 2000);
   };
 
   return (
