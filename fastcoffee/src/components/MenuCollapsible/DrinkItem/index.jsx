@@ -1,39 +1,32 @@
-import React, {useState} from "react";
-
-import Alert from 'react-bootstrap/Alert';
+import React, { useState } from "react";
+import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import Collapse from 'react-bootstrap/Collapse';
 
-import './MenuCollapsible.css';
+import './DrinkItem.css';
 
+import { drinkItems } from "../../../controller/data/drinks";
+import { drinksItemImage } from "../../../assets";
 
-function DrinkItem(props) {
-    const { title } = props;
-    const ctrAria = title.toString().replace(" ", "") + "-collapsible";
-    const [open, setOpen] = useState(false);
-  
+function DrinkItems(props) {
     return (
-      <>
-        <div
-          className="collapsible_toggler"
-          onClick={() => setOpen(!open)}
-          aria-controls={ ctrAria }
-          aria-expanded={open}
-        >
-            <div className="content">
-                { title }
-            </div>
-        </div>
-        <Collapse in={open}>
-          <div id={ ctrAria } className="collapsible_area">
-            <Button>Test1</Button>
-            <Button>Test2</Button>
-            <Alert>Test3</Alert>
-            <Button>Test4</Button>
-          </div>
-        </Collapse>
-      </>
-    );
-  }
-  
-export default DrinkItem;
+        <>
+            {drinkItems.map((item) => {
+                
+                // const itemImg = require(itemImgName.toString())
+                return (
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src={ drinksItemImage.filter(function(el){return el.id === item.Item_ID })[0].image } alt="File corrupted"/>
+                        <Card.Body>
+                            <Card.Title className="DrinkName">{ item.Name }</Card.Title>
+                            <Card.Text>
+                                { item.Description }
+                            </Card.Text>
+                            <Button variant="primary">{ item.Price }</Button>
+                        </Card.Body>
+                    </Card>
+                );
+            })}
+        </>
+    )
+}
+export default DrinkItems;

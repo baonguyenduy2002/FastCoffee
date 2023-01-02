@@ -37,6 +37,8 @@ import setting_onFocus from "./icons_onFocus/setting_onFocus.svg";
 import taskList_onFocus from "./icons_onFocus/taskList_onFocus.svg";
 import calendar_onFocus from "./icons_onFocus/calender_onFucus.svg";
 
+import drink_1 from "./image/drink_1.jpg";
+
 export const icons = [
   {
     icon: home,
@@ -199,3 +201,10 @@ export const iconsEmployee = [
     name: "removeEmployee",
   },
 ];
+
+export const drinksItemImage = [
+  {
+    id: 1,
+    image: drink_1
+  }
+]

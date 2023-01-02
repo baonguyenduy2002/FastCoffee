@@ -12,5 +12,6 @@
     display: flex;
     padding: 10px;
     flex-direction: row;
-    gap: 10px
+    gap: 10px;
+    flex-wrap: wrap
 }

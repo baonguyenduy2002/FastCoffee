@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Collapse from 'react-bootstrap/Collapse';
 
 import './MenuCollapsible.css';
+import DrinkItems from "./DrinkItem";
 
 
 function MenuCollapsible(props) {
@@ -26,10 +27,7 @@ function MenuCollapsible(props) {
         </div>
         <Collapse in={open}>
           <div id={ ctrAria } className="collapsible_area">
-            <Button>Test1</Button>
-            <Button>Test2</Button>
-            <Alert>Test3</Alert>
-            <Button>Test4</Button>
+            <DrinkItems />
           </div>
         </Collapse>
       </>

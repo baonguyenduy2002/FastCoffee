@@ -44,9 +44,7 @@ function Menu() {
             
           </MenuCollapsible>
           </div>
-        sdfasd
-        sdfasdf
-        sdfasdf
+          --------------------------------------------------------------------------------
       </div>
     </div>
   );
