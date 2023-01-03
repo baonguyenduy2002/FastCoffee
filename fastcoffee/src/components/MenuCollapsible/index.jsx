@@ -11,7 +11,7 @@ import DrinkItems from "./DrinkItem";
 function MenuCollapsible(props) {
     const { title } = props;
     const ctrAria = title.toString().replace(" ", "") + "-collapsible";
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
   
     return (
       <>

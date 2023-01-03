@@ -12,13 +12,12 @@ function DrinkItems(props) {
         <>
             {drinkItems.map((item) => {
                 
-                // const itemImg = require(itemImgName.toString())
                 return (
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={ drinksItemImage.filter(function(el){return el.id === item.Item_ID })[0].image } alt="File corrupted"/>
-                        <Card.Body>
+                        <Card.Body className="DrinkInfo">
                             <Card.Title className="DrinkName">{ item.Name }</Card.Title>
-                            <Card.Text>
+                            <Card.Text className="DrinkDescription">
                                 { item.Description }
                             </Card.Text>
                             <Button variant="primary">{ item.Price }</Button>

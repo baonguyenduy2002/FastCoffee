@@ -1,11 +1,76 @@
-.Home{
-    margin-left: 35px;
-    width: 1350px;
-    height: 982px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: space-around;
-    background-color: transparent;
-    border: none;
+.Home {
+    align-items: center;
+    width: 1318px;
+    height: 890px;
+    left: 165px;
+    top: 65px;
+    background-color: #FCFBFF;
+    justify-content: center;
+    border-radius: 20px 20px 20px 20px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.Home .ShopImage {
+    /* width: 100%; */
+    overflow: hidden;
+    height: 25%;
+}
+
+.ShopImage img {
+    /* pointer-events: none; */
+    transform: translate(0%, -20%);
+    width: 100%;
+    z-index: -1;
+}
+
+.ShopProfile {
+    position: relative;
+}
+
+.ShopInfo {
+    width: fit-content;
+    max-width: 40%;
+    padding: 30px;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #FCFBFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ShopName {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.ShopName {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ShopLocation {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ShopLocation .Distance {
+    font-weight: bold;
+}
+
+.Home .ShopMenu {
+    padding: 100px 30px 0 30px;
+}
+
+.Home .ShopMenu .MustTry {
+    width: 100%;
 }
