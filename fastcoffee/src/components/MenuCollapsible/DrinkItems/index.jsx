@@ -15,7 +15,6 @@ function DrinkItems(props) {
     return (
         <>
             {drinkItemsList.map((item) => {
-                
                 return (
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={ drinksItemImage.filter(function(el){return el.id === item.Item_ID })[0].image } alt="File corrupted"/>
