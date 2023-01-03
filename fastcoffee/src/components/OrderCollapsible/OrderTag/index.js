@@ -34,6 +34,8 @@ function OrderTag(props) {
                     {moment(item.DateTime).minute()}:
                     {moment(item.DateTime).second()}
                   </Card.Text>
+                  <Button>Accept</Button>
+                  <Button>Deny</Button>
                 </Card.Body>
               </Card>
             );

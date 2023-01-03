@@ -1,20 +1,13 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-=======
-import React, {useState} from "react";
->>>>>>> 7f4d7620b5e670f165aeb34cd79016ea2820ffaa
 
 import "./Menu.css";
 import { COLORS } from "../../../../assets/constants";
 
 import Example from "../../../../components/MenuCollapsible";
 import MenuCollapsible from "../../../../components/MenuCollapsible";
-
-import MenuCollapsible from "../../../../components/MenuCollapsible";
 import DrinkItems from "../../../../components/MenuCollapsible/DrinkItems";
 
 function Menu() {
-<<<<<<< HEAD
   const [restaurant, setRestaurant] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null);
   const shopImg = require("../../../../assets/image/login_background1.jpg");
@@ -35,51 +28,17 @@ function Menu() {
             </span>
           </div>
         </div>
-=======
-
-  const shopImg = require("../../../../assets/image/login_background1.jpg")
-  return (
-
-    <div className="Menu">
-      <div className="MenuNavigation">
-        nav bar stuffs
->>>>>>> 7f4d7620b5e670f165aeb34cd79016ea2820ffaa
       </div>
 
       <div className="ShopMenu">
-        <div className="MustTry">
-<<<<<<< HEAD
-          <MenuCollapsible
-            className="MustTry"
-            title="Must try"
-          ></MenuCollapsible>
-          <MenuCollapsible
-            className="BestSellers"
-            title="Best Sellers"
-          ></MenuCollapsible>
-          <MenuCollapsible
-            className="NewDrinks"
-            title="New Drinks"
-          ></MenuCollapsible>
+        <div className="Menu">
+          <MenuCollapsible className="Menu" title="Menu">
+            <DrinkItems list="mustTry" />
+          </MenuCollapsible>
         </div>
-        --------------------------------------------------------------------------------
-=======
-          <MenuCollapsible className="MustTry" title="Must try">
-            <DrinkItems list="menu"/>
-          </MenuCollapsible>
-          <MenuCollapsible className="BestSellers" title="Best Sellers">
-            
-          </MenuCollapsible>
-          <MenuCollapsible className="NewDrinks" title="New Drinks">
-            
-          </MenuCollapsible>
-          </div>
-          --------------------------------------------------------------------------------
->>>>>>> 7f4d7620b5e670f165aeb34cd79016ea2820ffaa
       </div>
     </div>
   );
 }
-
 
 export default Menu;
