@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import CreateIcon from '@mui/icons-material/Create';
+
 
 import "./DrinkItems.css";
 
@@ -27,6 +29,8 @@ function DrinkItems(props) {
             {drinkItems.map((item) => {
                 return (
                     <Card style={{ width: '18rem' }}>
+                        <div className="delete"></div>
+                        <CreateIcon className="edit"></CreateIcon>
                         {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
                         <Card.Body className="DrinkInfo">
                             <Card.Title className="DrinkName">{item.Name}</Card.Title>
