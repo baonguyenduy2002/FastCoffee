@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import AddIcon from '@mui/icons-material/Add'
@@ -27,10 +27,10 @@ function DrinkItems(props) {
 
     return (
         <>
-            {drinkItemsList.map((item) => {
+            {drinkItems.map((item) => {
                 return (
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" />
+                        {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
                         <Card.Body className="DrinkInfo">
                             <Card.Title className="DrinkName">{item.Name}</Card.Title>
                             <Card.Text className="DrinkDescription">
