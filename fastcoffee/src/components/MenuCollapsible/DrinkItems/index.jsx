@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import AddIcon from '@mui/icons-material/Add'
 
-import "./DrinkItem.css";
+import "./DrinkItems.css";
 
 import * as api from "../../../controller/data/drinks";
-import { drinksItemImage } from "../../../assets";
 import { COLORS } from "../../../assets/constants";
-import { width } from "@mui/system";
 
 const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
@@ -42,11 +39,6 @@ function DrinkItems(props) {
                 );
             })}
 
-            <div style={{ width: '18rem' }}>
-                <Button variant="add-item outline-primary " style={add_item_style}>
-                    <AddIcon className="add-icon"/>
-                </Button>
-            </div>
         </>
     )
 }
