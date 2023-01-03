@@ -13,5 +13,6 @@
     padding: 10px;
     flex-direction: row;
     gap: 10px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    align-items: center;
 }
