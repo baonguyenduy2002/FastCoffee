@@ -5,11 +5,11 @@ import Button from 'react-bootstrap/Button'
 import Collapse from 'react-bootstrap/Collapse';
 
 import './MenuCollapsible.css';
-import DrinkItems from "./DrinkItem";
+import DrinkItems from "./DrinkItems";
 
 
 function MenuCollapsible(props) {
-    const { title } = props;
+    const { children, title } = props;
     const ctrAria = title.toString().replace(" ", "") + "-collapsible";
     const [open, setOpen] = useState(true);
   
@@ -27,7 +27,7 @@ function MenuCollapsible(props) {
         </div>
         <Collapse in={open}>
           <div id={ ctrAria } className="collapsible_area">
-            <DrinkItems />
+            { children }
           </div>
         </Collapse>
       </>

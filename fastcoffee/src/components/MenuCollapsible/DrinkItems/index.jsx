@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-import './DrinkItem.css';
+import './DrinkItems.css';
 
 import { drinkItems } from "../../../controller/data/drinks";
 import { drinksItemImage } from "../../../assets";
 
 function DrinkItems(props) {
+
+    const { list } = props;
+    const drinkItemsList = drinkItems[list]
+
     return (
         <>
-            {drinkItems.map((item) => {
+            {drinkItemsList.map((item) => {
                 
                 return (
                     <Card style={{ width: '18rem' }}>

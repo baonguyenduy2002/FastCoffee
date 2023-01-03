@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import "./Menu.css";
 
 import MenuCollapsible from "../../../../components/MenuCollapsible";
+import DrinkItems from "../../../../components/MenuCollapsible/DrinkItems";
 
 function Menu() {
 
@@ -17,7 +18,7 @@ function Menu() {
       <div className="ShopMenu">
         <div className="MustTry">
           <MenuCollapsible className="MustTry" title="Must try">
-
+            <DrinkItems list="menu"/>
           </MenuCollapsible>
           <MenuCollapsible className="BestSellers" title="Best Sellers">
             

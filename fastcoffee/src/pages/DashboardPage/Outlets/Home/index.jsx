@@ -5,6 +5,7 @@ import "./Home.css";
 import { COLORS } from "../../../../assets/constants";
 
 import MenuCollapsible from "../../../../components/MenuCollapsible";
+import DrinkItems from "../../../../components/MenuCollapsible/DrinkItems";
 
 
 
@@ -34,7 +35,7 @@ function Home() {
       <div className="ShopMenu">
         <div className="MustTry">
           <MenuCollapsible className="MustTry" title="Must try">
-
+            <DrinkItems list="mustTry"/>
           </MenuCollapsible>
           <MenuCollapsible className="BestSellers" title="Best Sellers">
             
