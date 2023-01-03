@@ -1,7 +1,11 @@
-/* .DrinkName {
-    text-align: start;
+.btn-add-item:hover {
+    border: 3px solid var(--black) !important;
+    background-color: transparent !important;
+    color: black !important;
 }
 
-.DrinkDescription {
-    text-align: start;
-} */
+.btn-add-item:active  {
+    border: 4px solid var(--black) !important;
+    background-color: transparent !important;
+    color: black !important;
+}
