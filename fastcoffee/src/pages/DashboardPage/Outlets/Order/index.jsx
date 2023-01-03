@@ -1,28 +1,59 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import OrderCollapsible from "../../../../components/OrderCollapsible";
+
+import "./Order.css";
+import { COLORS } from "../../../../assets/constants";
 
 function Order() {
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    fetchOrder();
-  }, []);
-
-  const fetchOrder = async () => {
-    await axios
-      .get("https://fast-coffee-be.vercel.app/api/order/get")
-      .then((response) => setOrders(response.data));
-  };
+  const shopImg = require("../../../../assets/image/login_background1.jpg");
 
   return (
-    <div>
-      <h1>ORDER</h1>
-      {orders.map((order) => (
-        <div>
-          <h2>{order.Order_ID}</h2>
-          <h2>{order.DateTime}</h2>
+    <div className="Order">
+      <div className="ShopImage">
+        <img src={shopImg} alt="" />
+      </div>
+
+      <div className="ShopProfile">
+        <div className="ShopInfo">
+          <div className="ShopName">Your current ORDERs</div>
         </div>
-      ))}
+      </div>
+
+      <div className="OrderList">
+        <div className="OrderType">
+          <OrderCollapsible
+            className="Pending"
+            title="Pending"
+          ></OrderCollapsible>
+
+          <OrderCollapsible
+            className="Accepted"
+            title="Accepted"
+          ></OrderCollapsible>
+
+          <OrderCollapsible
+            className="Processing"
+            title="Processing"
+          ></OrderCollapsible>
+
+          <OrderCollapsible className="Ready" title="Ready"></OrderCollapsible>
+
+          <OrderCollapsible
+            className="Denied"
+            title="Denied"
+          ></OrderCollapsible>
+
+          <OrderCollapsible
+            className="Cancelled"
+            title="Cancelled"
+          ></OrderCollapsible>
+
+          <OrderCollapsible
+            className="Finished"
+            title="Finished"
+          ></OrderCollapsible>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,17 @@
+.collapsible_toggler {
+    width: 100%;
+    height: 50px;
+    text-align: start;
+    line-height: 50px;
+    font-size: larger;
+    font-weight: bolder;
+    border-bottom: 2px solid #CDCDD2;
+}
+
+.collapsible_area {
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap
+}

@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import "./style.css";
 import Sidebar from "../../../components/SideBar";
 
+
 function Layout() {
 	return (
 		<div className="layout">

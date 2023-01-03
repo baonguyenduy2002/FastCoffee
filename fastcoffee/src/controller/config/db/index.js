@@ -1,18 +1,7 @@
-const mysql = require("mysql2");
+import axios from "axios";
 
-const connection = mysql.createConnection({
-  host: "containers-us-west-62.railway.app",
-  user: "root",
-  port: "6378",
-  password: "QQgD8tSGMXWPsUemEOW4",
-  database: "railway_fastcoffee",
+const instance = axios.create({
+  baseURL: "https://fast-coffee-be.vercel.app/",
 });
 
-connection.connect((error) => {
-  if (error) {
-    throw error;
-  }
-  console.log("Connect to the database successfull !!!");
-});
-
-module.exports = connection;
+export default instance;
