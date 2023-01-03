@@ -49,17 +49,3 @@
     cursor: pointer;
     opacity: 1;
   }
-  .edit:before, .edit:after {
-    position: absolute;
-    left: 15px;
-    content: ' ';
-    height: 16px;
-    width: 2px;
-    background-color: #333;
-  }
-  .edit:before {
-    transform: rotate(45deg);
-  }
-  .edit:after {
-    transform: rotate(-45deg);
-  }
