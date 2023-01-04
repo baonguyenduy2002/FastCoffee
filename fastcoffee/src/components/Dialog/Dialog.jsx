@@ -55,8 +55,6 @@ export default function EditDialogs(props) {
 	// const { openAddPopup, setOpenAddPopup, handleCreate } = props;
 	const { openAddPopup, setOpenAddPopup, initialValues } = props;
 
-	console.log(initialValues)
-
 	const handleClose = () => {
 		setOpenAddPopup(false);
 	};
@@ -79,7 +77,7 @@ export default function EditDialogs(props) {
 			open={openAddPopup}
 		>
 			<CustomDialogTitle id="customized-dialog-title" onClose={handleClose}>
-				Add Employee
+				Edit Drinks
 			</CustomDialogTitle>
 			{/* <span style={{ marginLeft: 100, paddingBottom: 25 }}> */}
 			<span style={{ margin: 30 }}>
@@ -94,9 +92,7 @@ export default function EditDialogs(props) {
 						initialValues={initialValues}
 						dialogState={openAddPopup}
 						setDialogState={setOpenAddPopup}
-					>
-					</EditDrink>
-
+					/>
 				</DialogContent>
 			</span>
 		</CustomDialog>

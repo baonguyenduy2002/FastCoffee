@@ -71,7 +71,7 @@ function DrinkItems(props) {
         <>
             {drinkItems.map((item) => {
                 const initialValues = {
-                    "id": item.ID,
+                    "id": item.Item_ID,
                     "name": item.Name,
                     "description": item.Description,
                     "price": item.Price,
