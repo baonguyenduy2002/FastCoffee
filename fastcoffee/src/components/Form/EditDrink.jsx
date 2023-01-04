@@ -14,21 +14,21 @@ import "./EditDrink.css";
 
 
 
-// let initialFValues = {
-//     id: 0,
-//     imageUrl:
-//         "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-//     des: undefined,
-//     emId: undefined,
-//     collector: undefined,
-//     startDatetime: undefined,
-//     endDatetime: undefined,
-//     workingArea: undefined,
-//     mcps: [],
-//     vehicle: undefined,
-//     route: false,
-//     status: false,
-// };
+let initialFValues = {
+    id: 0,
+    imageUrl:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    des: undefined,
+    emId: undefined,
+    collector: undefined,
+    startDatetime: undefined,
+    endDatetime: undefined,
+    workingArea: undefined,
+    mcps: [],
+    vehicle: undefined,
+    route: false,
+    status: false,
+};
 
 const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
@@ -43,19 +43,27 @@ function valuetext(value) {
     return formatter.format(value);
 }
 
-
 export default function EditDrink(props) {
     const { dialogState, setDialogState, handleCreate, initialValues } = props;
-    console.log(initialValues)
     const handleCloseDialog = () => {
         setDialogState(false);
     };
-    const [value, setValue] = React.useState(10);
+    const [price, setPrice] = useState(initialValues.price);
+    const [name, setName] = useState(initialValues.name);
+    const [des, setDes] = useState(initialValues.description)
 
-    const handleChange = (event, newValue) => {
+    const handleChangePrice = (event, newValue) => {
         if (typeof newValue === 'number') {
-            setValue(newValue);
+            setPrice(newValue);
         }
+    }
+
+    const handleChangeName = (event, newValue) => {
+        setName(event.target.value)
+    }
+
+    const handleChangeDes = (event, newValue) => {
+        setDes(event.target.value)
     }
 
     //------------------------useState--------------------
@@ -75,32 +83,39 @@ export default function EditDrink(props) {
                 // alignItems="center"
                 justifyContent="center"
             >
-                <Grid item xs={8}>
+                <Grid item md={8}>
                     <TextField
                         placeholder="Name"
-                        style={{ width: 300, marginTop: 8, marginBottom: 8 }}
+                        style={{ width: 600, marginTop: 8, marginBottom: 8 }}
                         id="name"
                         label="Drinks Name"
-                        value={initialValues.des}
-                        onChange={(event, newValue) => {
-                            initialValues.description = event.target.value;
-                        }}
+                        value={name}
+                        onChange={handleChangeName}
                     />
-
+                    <TextField
+                        placeholder="Description"
+                        style={{ width: 600, marginTop: 8, marginBottom: 8 }}
+                        multiline={true}
+                        rows={5}
+                        id="descrition"
+                        label="Drinks Name"
+                        value={des}
+                        onChange={handleChangeDes}
+                    />
                 </Grid>
-                <Grid item xs={4}>
-                    <div className="Price" style={{ width: 300, marginTop: 8, marginBottom: 8 }} >
+                <Grid item md={4} className="second-grid">
+                    <div className="Price" style={{ marginTop: 8, marginBottom: 8 }} >
                         <Typography gutterBottom>Price</Typography>
                         <Slider
-                            value={value}
+                            value={price}
                             aria-label="Price"
                             min={10000}
-                            step={5000}
+                            step={1000}
                             max={300000}
-                            defaultValue={initialValues.price}
+                            defaultValue={50000}
                             getAriaValueText={valuetext}
                             valueLabelFormat={valuetext}
-                            onChange={handleChange}
+                            onChange={handleChangePrice}
                             valueLabelDisplay="auto"
                         />
                     </div>
