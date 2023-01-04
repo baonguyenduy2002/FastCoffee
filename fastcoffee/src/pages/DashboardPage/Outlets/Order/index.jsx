@@ -5,7 +5,7 @@ import "./Order.css";
 import { COLORS } from "../../../../assets/constants";
 
 function Order() {
-  const shopImg = require("../../../../assets/image/login_background1.jpg");
+  const shopImg = require("../../../../assets/image/background_2.jpg");
 
   return (
     <div className="Order">
@@ -39,6 +39,11 @@ function Order() {
           <OrderCollapsible className="Ready" title="Ready"></OrderCollapsible>
 
           <OrderCollapsible
+            className="Finished"
+            title="Finished"
+          ></OrderCollapsible>
+
+          <OrderCollapsible
             className="Denied"
             title="Denied"
           ></OrderCollapsible>
@@ -46,11 +51,6 @@ function Order() {
           <OrderCollapsible
             className="Cancelled"
             title="Cancelled"
-          ></OrderCollapsible>
-
-          <OrderCollapsible
-            className="Finished"
-            title="Finished"
           ></OrderCollapsible>
         </div>
       </div>
