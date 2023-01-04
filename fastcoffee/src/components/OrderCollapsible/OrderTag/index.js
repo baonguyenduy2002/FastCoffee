@@ -12,7 +12,7 @@ function OrderTag(props) {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    api.getOrders("api/order/get").then((res) => setOrders(res.data));
+    api.getOrders("api/order/get").then((res) => {res.data ? setOrders(res.data) : setOrders([])});
   }, []);
 
   if (props.title == "Pending")

@@ -3,11 +3,19 @@ import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
+import { DialogContent } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-// import AddTaskForm from "./AddTaskForm";
+import FormControl from '@mui/material/FormControl';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import FormHelperText from '@mui/material/FormHelperText';
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+
+
+import AddDrink from "../Form/AddDrink";
+
+const CustomDialog = styled(Dialog)(({ theme }) => ({
 	"& .MuiDialogContent-root": {
 		padding: theme.spacing(2),
 	},
@@ -19,7 +27,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 	}
 }));
 
-function BootstrapDialogTitle(props) {
+function CustomDialogTitle(props) {
 	const { children, onClose, ...other } = props;
 
 	return (
@@ -43,25 +51,25 @@ function BootstrapDialogTitle(props) {
 	);
 }
 
-BootstrapDialogTitle.propTypes = {
+CustomDialogTitle.propTypes = {
 	children: PropTypes.node,
 	onClose: PropTypes.func.isRequired,
 };
 
 export default function AddDialogs(props) {
-	// const { openAddPopup, setOpenAddPopup, handleCreate } = props;
-	const { openAddPopup, setOpenAddPopup } = props;
+	const { openAddPopup, setOpenAddPopup, handleCreate } = props;
+	// const { openAddPopup, setOpenAddPopup } = props;
 
 	const handleClose = () => {
 		setOpenAddPopup(false);
 	};
 
-	// const doCreate = async (data) => {
-	// 	handleCreate(data);
-	// };
+	const doCreate = async (data) => {
+		handleCreate(data);
+	};
 
 	return (
-		<BootstrapDialog
+		<CustomDialog
 			PaperProps={{
 				style: { borderRadius: 20 },
 			}}
@@ -73,9 +81,9 @@ export default function AddDialogs(props) {
 			aria-labelledby="customized-dialog-title"
 			open={openAddPopup}
 		>
-			<BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+			<CustomDialogTitle id="customized-dialog-title" onClose={handleClose}>
 				Add Employee
-			</BootstrapDialogTitle>
+			</CustomDialogTitle>
 			{/* <span style={{ marginLeft: 100, paddingBottom: 25 }}> */}
 			<span style={{ margin: 30 }}>
 				{/* <AddTaskForm
@@ -84,9 +92,15 @@ export default function AddDialogs(props) {
 					handleCreate={doCreate}
 				/> */}
 
-				asdfdsafadsfafjaiwheasdfasdfadsfadsf
-				asdfasdfasd
+				<DialogContent>
+					<AddDrink 
+						dialogState={openAddPopup}
+						setDialogState={setOpenAddPopup}
+					>
+					</AddDrink>
+
+				</DialogContent>
 			</span>
-		</BootstrapDialog>
+		</CustomDialog>
 	);
 }

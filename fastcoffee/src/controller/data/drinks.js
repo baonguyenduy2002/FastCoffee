@@ -1,7 +1,12 @@
 import instance from "../config/db";
 
-export const getDrinks = async (path) => {
-  let response = await instance.get(path);
+export const getDrinks = async () => {
+  let response = await instance.get("api/item/get");
+  return response;
+};
+
+export const updateDrinks = async (id, data) => {
+  let response = await instance.get("api/item/get");
   return response;
 };
 

@@ -28,17 +28,44 @@ function DrinkItems(props) {
     const [drinkItems, setDrinkItems] = useState([]);
     const [openAddPopup, setOpenAddPopup] = useState(false);
 
-	const editDialog = () => {
-		setOpenAddPopup(true);
+    const editDialog = () => {
+        setOpenAddPopup(true);
+    };
+
+    const getItems = async () => {
+        try {
+            await api.getDrinks().then((res) => { res.data ? setDrinkItems(res.data) : setDrinkItems([]) });
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const handleEdit = async (id, data) => {
+		try {
+			await api.updateDrinks(id, data);
+			// await api.getTasks().then((res) => {
+			// 	setTaskList(res);
+			// });
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
     useEffect(() => {
-        api.getDrinks("api/item/get").then((res) => setDrinkItems(res.data));
+        getItems();
     }, []);
 
     return (
         <>
             {drinkItems.map((item) => {
+                const initialValues = {
+                    "id": item.ID,
+                    "name": item.Name,
+                    "description": item.Description,
+                    "price": item.Price,
+                    "item_image": item.item_image,
+                    "avalability": item.Avalability
+                }
                 return (
                     <>
                         <Card style={{ width: '18rem' }}>
@@ -54,14 +81,14 @@ function DrinkItems(props) {
                             </Card.Body>
                         </Card>
 
-                        <AddDialogs 
+                        <AddDialogs
+                            initialValues={initialValues}
                             openAddPopup={openAddPopup}
                             setOpenAddPopup={setOpenAddPopup}
                         />
                     </>
                 );
             })}
-
         </>
     )
 }
