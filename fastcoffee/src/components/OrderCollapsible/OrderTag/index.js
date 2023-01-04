@@ -138,7 +138,6 @@ function OrderTag(props) {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
     api
       .getOrders("api/order/get")
       .then((res) => (res.data ? setOrders(res.data) : setOrders([])));
@@ -251,9 +250,10 @@ function OrderTag(props) {
             },
           ])
     );
-=======
-    api.getOrders("api/order/get").then((res) => {res.data ? setOrders(res.data) : setOrders([])});
->>>>>>> develop
+
+    api.getOrders("api/order/get").then((res) => {
+      res.data ? setOrders(res.data) : setOrders([]);
+    });
   }, []);
 
   if (props.title === "Pending")
