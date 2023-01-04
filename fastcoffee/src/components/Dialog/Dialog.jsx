@@ -6,14 +6,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { DialogContent } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import FormHelperText from '@mui/material/FormHelperText';
 
 
-
-import AddDrink from "../Form/AddDrink";
+import EditDrink from "../Form/EditDrink";
 
 const CustomDialog = styled(Dialog)(({ theme }) => ({
 	"& .MuiDialogContent-root": {
@@ -23,7 +18,7 @@ const CustomDialog = styled(Dialog)(({ theme }) => ({
 		padding: theme.spacing(1),
 	},
 	"& .MuiBackdrop-root": {
-		backgroundColor: "rgba(0,0,0,0.2)",
+		backgroundColor: 'rgba(0,0,0,0.3)',
 	}
 }));
 
@@ -56,17 +51,19 @@ CustomDialogTitle.propTypes = {
 	onClose: PropTypes.func.isRequired,
 };
 
-export default function AddDialogs(props) {
-	const { openAddPopup, setOpenAddPopup, handleCreate } = props;
-	// const { openAddPopup, setOpenAddPopup } = props;
+export default function EditDialogs(props) {
+	// const { openAddPopup, setOpenAddPopup, handleCreate } = props;
+	const { openAddPopup, setOpenAddPopup, initialValues } = props;
+
+	console.log(initialValues)
 
 	const handleClose = () => {
 		setOpenAddPopup(false);
 	};
 
-	const doCreate = async (data) => {
-		handleCreate(data);
-	};
+	// const doCreate = async (data) => {
+	// 	handleCreate(data);
+	// };
 
 	return (
 		<CustomDialog
@@ -93,11 +90,12 @@ export default function AddDialogs(props) {
 				/> */}
 
 				<DialogContent>
-					<AddDrink 
+					<EditDrink 
+						initialValues={initialValues}
 						dialogState={openAddPopup}
 						setDialogState={setOpenAddPopup}
 					>
-					</AddDrink>
+					</EditDrink>
 
 				</DialogContent>
 			</span>

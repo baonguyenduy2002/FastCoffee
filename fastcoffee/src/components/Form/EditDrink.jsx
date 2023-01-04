@@ -18,9 +18,25 @@ import { format } from "date-fns";
 
 
 // import RouteDialogs from "./Routelog";
-import "./AddDrink.css";
+import "./EditDrink.css";
 
 
+
+// let initialFValues = {
+//     id: 0,
+//     imageUrl:
+//         "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+//     des: undefined,
+//     emId: undefined,
+//     collector: undefined,
+//     startDatetime: undefined,
+//     endDatetime: undefined,
+//     workingArea: undefined,
+//     mcps: [],
+//     vehicle: undefined,
+//     route: false,
+//     status: false,
+// };
 
 let initialFValues = {
     id: 0,
@@ -187,7 +203,7 @@ export default function AddDrink(props) {
         <Box className="">
             <Grid
                 container
-                spacing={4}
+                spacing={5}
                 direction="row"
                 alignItems="center"
                 justifyContent="center"
@@ -203,99 +219,6 @@ export default function AddDrink(props) {
                             initialFValues.des = event.target.value;
                         }}
                     />
-                    <Autocomplete
-                        clearOnBlur={false}
-                        style={{ width: 300, marginTop: 8, marginBottom: 8 }}
-                        id="emId"
-                        options={optionEm}
-                        getOptionLabel={(option) => option.name}
-                        renderInput={(params) => (
-                            <TextField {...params} label="Employee" placeholder="employee" />
-                        )}
-                        value={initialFValues.emId}
-                        onChange={(event, newValue) => {
-                            console.log("hello: ", newValue.id);
-                            initialFValues.emId = newValue.id;
-                            initialFValues.collector = newValue.name;
-                        }}
-                    />
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <span style={{ width: 300, marginTop: 8, marginBottom: 8 }}>
-                            <DateTimePicker
-                                clearOnBlur={false}
-                                placeholder="time"
-                                id="time"
-                                label="Start Date Time"
-                                value={startDate}
-                                onChange={(newValue) => {
-                                    handleChangeStartDate(newValue);
-                                    initialFValues.startDatetime = format(
-                                        newValue,
-                                        "yyyy-MM-dd'T'HH:mm"
-                                    );
-                                }}
-                                renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        sx={{ width: 300, marginTop: 1, marginBottom: 1 }}
-                                    />
-                                )}
-                            />
-                        </span>
-                        <span style={{ width: 300, marginTop: 8, marginBottom: 8 }}>
-                            <DateTimePicker
-                                clearOnBlur={false}
-                                placeholder="time"
-                                id="time"
-                                label="End Date Time"
-                                value={endDate}
-                                onChange={(newValue) => {
-                                    handleChangeEndDate(newValue);
-                                    initialFValues.endDatetime = format(
-                                        newValue,
-                                        "yyyy-MM-dd'T'HH:mm"
-                                    );
-                                }}
-                                renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        sx={{ width: 300, marginTop: 1, marginBottom: 1 }}
-                                    />
-                                )}
-                            />
-                        </span>
-                    </LocalizationProvider>
-                    <Autocomplete
-                        clearOnBlur={false}
-                        style={{ width: 300, marginTop: 8, marginBottom: 8 }}
-                        disablePortal
-                        id="WorkingArea"
-                        options={optionArea}
-                        getOptionLabel={(option) => option.name}
-                        isOptionEqualToValue={(option, value) => option.id === value.id}
-                        renderInput={(params) => (
-                            <TextField {...params} label="Area" placeholder="area" />
-                        )}
-                        value={initialFValues.workingArea}
-                        onChange={(event, newValue) => {
-                            initialFValues.workingArea = newValue.name;
-                        }}
-                    />
-                    <Autocomplete
-                        clearOnBlur={false}
-                        style={{ width: 300, marginTop: 8, marginBottom: 8 }}
-                        id="vehicle"
-                        options={optionVehicle}
-                        getOptionLabel={(option) => option.name}
-                        isOptionEqualToValue={(option, value) => option.id === value.id}
-                        renderInput={(params) => (
-                            <TextField {...params} label="Truck" placeholder="truck" />
-                        )}
-                        value={initialFValues.vehicle}
-                        onChange={(event, newValue) => {
-                            initialFValues.vehicle = newValue.name;
-                        }}
-                    />
                     <Slider
                         value={value}
                         aria-label="Temperature"
@@ -309,31 +232,8 @@ export default function AddDrink(props) {
                     />
                 </Grid>
                 <Grid item xs={4}>
-                    <div className="MCPS box">
-                        <List
-                            className="ListFrame"
-                            component="nav"
-                            aria-label="mailbox folders"
-                        >
-                            <h1 style={{ color: "#315C57" }}>Choose MCPs</h1>
-                            {MCPList.map((MCP, idx) => (
-                                <ListItem
-                                    button
-                                    divider
-                                    key={idx}
-                                    className="CheckButton"
-                                    onClick={() => handleCheck(MCP.id)}
-                                >
-                                    <input
-                                        className="CheckBox"
-                                        type="checkbox"
-                                        checked={checkedMCP.includes(MCP.id)}
-                                        onChange={() => handleCheck(MCP.id)}
-                                    />
-                                    {MCP.name}
-                                </ListItem>
-                            ))}
-                        </List>
+                    <div className="MCPsBox">
+                        alo
                     </div>
                 </Grid>
             </Grid>

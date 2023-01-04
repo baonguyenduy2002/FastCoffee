@@ -45,7 +45,7 @@ function Menu() {
           <MenuCollapsible className="Menu" title="Menu">
             <DrinkItems list="mustTry" />
             <div style={{ width: '18rem' }}>
-                <Button variant="add-item outline-primary " style={add_item_style}>
+                <Button variant="add-item outline-primary " style={add_item_style} onClick={() => {alert("adding drink")}}>
                     <AddIcon className="add-icon"/>
                 </Button>
             </div>

@@ -8,7 +8,7 @@ import "./DrinkItems.css";
 
 import * as api from "../../../controller/data/drinks";
 import { COLORS } from "../../../assets/constants";
-import AddDialogs from "../../Dialog/Dialog";
+import EditDialogs from "../../Dialog/Dialog";
 
 const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
@@ -19,6 +19,14 @@ const formatter = new Intl.NumberFormat('vi-VN', {
     //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
 
+const initialValues = {
+    "id": 1,
+    "name": "hello cafe",
+    "description": "good coffee for bruh day",
+    "price": "15000",
+    "item_image": "someImg.jpg",
+    "avalability": 15
+}
 
 const deleteDialog = () => {
     alert("deleting stuff")
@@ -27,9 +35,13 @@ const deleteDialog = () => {
 function DrinkItems(props) {
     const [drinkItems, setDrinkItems] = useState([]);
     const [openAddPopup, setOpenAddPopup] = useState(false);
+    const [initialFValues, setValue] = useState(initialValues);
 
-    const editDialog = () => {
-        setOpenAddPopup(true);
+    const editDialog = (initialValues) => {
+        return () => {
+            setOpenAddPopup(true);
+            setValue(initialValues);
+        }
     };
 
     const getItems = async () => {
@@ -41,15 +53,15 @@ function DrinkItems(props) {
     };
 
     const handleEdit = async (id, data) => {
-		try {
-			await api.updateDrinks(id, data);
-			// await api.getTasks().then((res) => {
-			// 	setTaskList(res);
-			// });
-		} catch (error) {
-			console.log(error);
-		}
-	};
+        try {
+            await api.updateDrinks(id, data);
+            // await api.getTasks().then((res) => {
+            // 	setTaskList(res);
+            // });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
         getItems();
@@ -67,10 +79,10 @@ function DrinkItems(props) {
                     "avalability": item.Avalability
                 }
                 return (
-                    <>
+                    <div key={item.ID}>
                         <Card style={{ width: '18rem' }}>
                             <div className="delete" onClick={deleteDialog}></div>
-                            <CreateIcon className="edit" fontSize="small" onClick={editDialog}></CreateIcon>
+                            <CreateIcon className="edit" fontSize="small" onClick={editDialog(initialValues)}></CreateIcon>
                             {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
                             <Card.Body className="DrinkInfo">
                                 <Card.Title className="DrinkName">{item.Name}</Card.Title>
@@ -80,15 +92,35 @@ function DrinkItems(props) {
                                 <Button variant="primary">{formatter.format(item.Price)}</Button>
                             </Card.Body>
                         </Card>
-
-                        <AddDialogs
-                            initialValues={initialValues}
-                            openAddPopup={openAddPopup}
-                            setOpenAddPopup={setOpenAddPopup}
-                        />
-                    </>
+                    </div>
                 );
             })}
+
+
+            <Card style={{ width: '18rem' }}>
+                <div className="delete" onClick={deleteDialog}></div>
+                <CreateIcon className="edit" fontSize="small" onClick={editDialog(initialValues)}></CreateIcon>
+                {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
+                <Card.Body className="DrinkInfo">
+                    <Card.Title className="DrinkName">hello cafe</Card.Title>
+                    <Card.Text className="DrinkDescription">
+                        ffffffffsdfsdfasdfasdf
+                    </Card.Text>
+                    <Button variant="primary">{formatter.format(15000)}</Button>
+                </Card.Body>
+            </Card>
+
+            {/* <EditDialogs
+                initialValues={initialValues}
+                openAddPopup={openAddPopup}
+                setOpenAddPopup={setOpenAddPopup}
+            /> */}
+
+            <EditDialogs
+                initialValues={initialFValues}
+                openAddPopup={openAddPopup}
+                setOpenAddPopup={setOpenAddPopup}
+            />
         </>
     )
 }
