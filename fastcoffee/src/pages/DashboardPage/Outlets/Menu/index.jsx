@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import AddIcon from '@mui/icons-material/Add'
 
 import "./Menu.css";
 import { COLORS } from "../../../../assets/constants";
@@ -11,6 +13,14 @@ function Menu() {
   const [restaurant, setRestaurant] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null);
   const shopImg = require("../../../../assets/image/login_background1.jpg");
+
+  const add_item_style = {
+    border: '3px solid ' + COLORS.darkgray,
+    color:  COLORS.darkgray,
+    borderRadius: '50%',
+    height: '60px',
+    width: '60px'
+  };
 
   return (
     <div className="Menu">
@@ -34,6 +44,11 @@ function Menu() {
         <div className="Menu">
           <MenuCollapsible className="Menu" title="Menu">
             <DrinkItems list="mustTry" />
+            <div style={{ width: '18rem' }}>
+                <Button variant="add-item outline-primary " style={add_item_style} onClick={() => {alert("adding drink")}}>
+                    <AddIcon className="add-icon"/>
+                </Button>
+            </div>
           </MenuCollapsible>
         </div>
       </div>
