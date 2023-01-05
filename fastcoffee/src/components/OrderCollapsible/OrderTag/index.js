@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import moment from "moment";
 
 import "./OrderTag.css";
@@ -115,26 +114,44 @@ function OrderTag(props) {
     },
   ]);
   const [state, updateState] = useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
+  const forceUpdate = () => {
+    updateState({});
+    console.log("re-render");
+  };
 
   const handleAccept = (id) => {
-    return () => api.makeAccepted(`api/order/accept/${id}`);
+    return () => {
+      api.makeAccepted(`api/order/accept/${id}`);
+      forceUpdate();
+    };
   };
 
   const handleDeny = (id) => {
-    return () => api.makeNext(`api/order/deny/${id}`);
+    return () => {
+      api.makeNext(`api/order/deny/${id}`);
+      forceUpdate();
+    };
   };
 
   const handleProcess = (id) => {
-    return () => api.makeNext(`api/order/process/${id}`);
+    return () => {
+      api.makeNext(`api/order/process/${id}`);
+      forceUpdate();
+    };
   };
 
   const handleReady = (id) => {
-    return () => api.makeNext(`api/order/ready/${id}`);
+    return () => {
+      api.makeNext(`api/order/ready/${id}`);
+      forceUpdate();
+    };
   };
 
   const handleFinish = (id) => {
-    return () => api.makeNext(`api/order/finish/${id}`);
+    return () => {
+      api.makeNext(`api/order/finish/${id}`);
+      forceUpdate();
+    };
   };
 
   useEffect(() => {
@@ -278,12 +295,12 @@ function OrderTag(props) {
                   <Card.Text className="text">
                     Note: {order.Order_note}
                   </Card.Text>
-                  <Button class="button" onClick={handleAccept(order.Order_ID)}>
+                  <button class="button" onClick={handleAccept(order.Order_ID)}>
                     Accept
-                  </Button>
-                  <Button class="button" onClick={handleDeny(order.Order_ID)}>
+                  </button>
+                  <button class="button" onClick={handleDeny(order.Order_ID)}>
                     Deny
-                  </Button>
+                  </button>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
                   if (itemIndex.Order_ID == order.Order_ID)
@@ -335,12 +352,12 @@ function OrderTag(props) {
                   <Card.Text className="text">
                     Note: {order.Order_note}
                   </Card.Text>
-                  <Button
+                  <button
                     class="button"
                     onClick={handleProcess(order.Order_ID)}
                   >
                     Process
-                  </Button>
+                  </button>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
                   if (itemIndex.Order_ID == order.Order_ID)
@@ -392,9 +409,9 @@ function OrderTag(props) {
                   <Card.Text className="text">
                     Note: {order.Order_note}
                   </Card.Text>
-                  <Button class="button" onClick={handleReady(order.Order_ID)}>
+                  <button class="button" onClick={handleReady(order.Order_ID)}>
                     Ready
-                  </Button>
+                  </button>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
                   if (itemIndex.Order_ID == order.Order_ID)
@@ -446,9 +463,9 @@ function OrderTag(props) {
                   <Card.Text className="text">
                     Note: {order.Order_note}
                   </Card.Text>
-                  <Button class="button" onClick={handleFinish(order.Order_ID)}>
+                  <button class="button" onClick={handleFinish(order.Order_ID)}>
                     Finish
-                  </Button>
+                  </button>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
                   if (itemIndex.Order_ID == order.Order_ID)
