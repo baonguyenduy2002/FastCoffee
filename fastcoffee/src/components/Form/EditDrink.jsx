@@ -13,23 +13,6 @@ import { Typography } from "@mui/material";
 import "./EditDrink.css";
 
 
-
-let initialFValues = {
-    id: 0,
-    imageUrl:
-        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    des: undefined,
-    emId: undefined,
-    collector: undefined,
-    startDatetime: undefined,
-    endDatetime: undefined,
-    workingArea: undefined,
-    mcps: [],
-    vehicle: undefined,
-    route: false,
-    status: false,
-};
-
 const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
     currency: 'VND',

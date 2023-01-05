@@ -8,6 +8,7 @@ import "./DrinkItems.css";
 import * as api from "../../../controller/data/drinks";
 import { COLORS } from "../../../assets/constants";
 import EditDialogs from "../../Dialog/Dialog";
+import { drinksItemImage } from "../../../assets";
 
 const formatter = new Intl.NumberFormat("vi-VN", {
   style: "currency",
@@ -43,16 +44,6 @@ function DrinkItems(props) {
     };
   };
 
-  const getItems = async () => {
-    try {
-      await api.getDrinks().then((res) => {
-        res.data ? setDrinkItems(res.data) : setDrinkItems([]);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleEdit = async (id, data) => {
     try {
       await api.updateDrinks(id, data);
@@ -65,7 +56,13 @@ function DrinkItems(props) {
   };
 
   useEffect(() => {
-    getItems();
+    try {
+      api.getDrinks().then((res) => {
+        res.data ? setDrinkItems(res.data) : setDrinkItems([]);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
@@ -89,6 +86,7 @@ function DrinkItems(props) {
                 onClick={editDialog(initialValues)}
               ></CreateIcon>
               {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
+              <Card.Img variant="top" src={drinksItemImage[0].image} alt="File corrupted" />
               <Card.Body className="DrinkInfo">
                 <Card.Title className="DrinkName">{item.Name}</Card.Title>
                 <Card.Text className="DrinkDescription">
@@ -111,6 +109,7 @@ function DrinkItems(props) {
           onClick={editDialog(initialValues)}
         ></CreateIcon>
         {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
+        <Card.Img variant="top" src={drinksItemImage[0].image} alt="File corrupted" />
         <Card.Body className="DrinkInfo">
           <Card.Title className="DrinkName">hello cafe</Card.Title>
           <Card.Text className="DrinkDescription">

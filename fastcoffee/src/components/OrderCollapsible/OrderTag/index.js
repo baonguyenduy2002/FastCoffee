@@ -303,7 +303,7 @@ function OrderTag(props) {
                   </button>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
-                  if (itemIndex.Order_ID == order.Order_ID)
+                  if (itemIndex.Order_ID === order.Order_ID)
                     return (
                       <div class="row row-cols-1 row-cols-md-3">
                         <Card.Body className="OrderImg">
@@ -330,7 +330,7 @@ function OrderTag(props) {
         })}
       </>
     );
-  else if (props.title == "Accepted")
+  else if (props.title === "Accepted")
     return (
       <>
         {orders.map((order) => {
@@ -360,7 +360,7 @@ function OrderTag(props) {
                   </button>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
-                  if (itemIndex.Order_ID == order.Order_ID)
+                  if (itemIndex.Order_ID === order.Order_ID)
                     return (
                       <div class="row row-cols-1 row-cols-md-3">
                         <Card.Body className="OrderImg">
@@ -387,7 +387,7 @@ function OrderTag(props) {
         })}
       </>
     );
-  else if (props.title == "Processing")
+  else if (props.title === "Processing")
     return (
       <>
         {orders.map((order) => {
@@ -414,7 +414,7 @@ function OrderTag(props) {
                   </button>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
-                  if (itemIndex.Order_ID == order.Order_ID)
+                  if (itemIndex.Order_ID === order.Order_ID)
                     return (
                       <div class="row row-cols-1 row-cols-md-3">
                         <Card.Body className="OrderImg">
@@ -441,7 +441,7 @@ function OrderTag(props) {
         })}
       </>
     );
-  else if (props.title == "Ready")
+  else if (props.title === "Ready")
     return (
       <>
         {orders.map((order) => {
@@ -468,7 +468,7 @@ function OrderTag(props) {
                   </button>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
-                  if (itemIndex.Order_ID == order.Order_ID)
+                  if (itemIndex.Order_ID === order.Order_ID)
                     return (
                       <div class="row row-cols-1 row-cols-md-3">
                         <Card.Body className="OrderImg">
@@ -519,7 +519,7 @@ function OrderTag(props) {
                   </Card.Text>
                 </Card.Body>
                 {itemList.map((itemIndex) => {
-                  if (itemIndex.Order_ID == order.Order_ID)
+                  if (itemIndex.Order_ID === order.Order_ID)
                     return (
                       <div class="row row-cols-1 row-cols-md-3">
                         <Card.Body className="OrderImg">
