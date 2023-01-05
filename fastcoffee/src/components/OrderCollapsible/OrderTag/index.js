@@ -6,6 +6,7 @@ import "./OrderTag.css";
 
 import * as api from "../../../controller/data/order";
 import image from "../../../assets/image/drink_1.jpg";
+import { Component } from "react";
 
 function OrderTag(props) {
   const { title } = props;
@@ -113,44 +114,35 @@ function OrderTag(props) {
       Name: "nothing",
     },
   ]);
-  const [state, updateState] = useState();
-  const forceUpdate = () => {
-    updateState({});
-    console.log("re-render");
-  };
+  const [state, updateState] = useState("");
 
   const handleAccept = (id) => {
     return () => {
       api.makeAccepted(`api/order/accept/${id}`);
-      forceUpdate();
     };
   };
 
   const handleDeny = (id) => {
     return () => {
       api.makeNext(`api/order/deny/${id}`);
-      forceUpdate();
     };
   };
 
   const handleProcess = (id) => {
     return () => {
       api.makeNext(`api/order/process/${id}`);
-      forceUpdate();
     };
   };
 
   const handleReady = (id) => {
     return () => {
       api.makeNext(`api/order/ready/${id}`);
-      forceUpdate();
     };
   };
 
   const handleFinish = (id) => {
     return () => {
       api.makeNext(`api/order/finish/${id}`);
-      forceUpdate();
     };
   };
 
@@ -271,7 +263,7 @@ function OrderTag(props) {
     api.getOrders("api/order/get").then((res) => {
       res.data ? setOrders(res.data) : setOrders([]);
     });
-  }, []);
+  }, [orders]);
 
   if (props.title === "Pending")
     return (
