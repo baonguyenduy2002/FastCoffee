@@ -9,10 +9,11 @@ import DrinkItems from "../../../../components/MenuCollapsible/DrinkItems";
 
 
 
+
 function Home() {
 
-  const [restaurant, setRestaurant] = useState(null);
-  const [currentLocation, setCurrentLocation] = useState(null);
+  const [shopName, setShopName] = useState("N/A");
+  const [shopAddress, setAdress] = useState("N/A");
   const shopImg = require("../../../../assets/image/login_background1.jpg")
 
   return (
