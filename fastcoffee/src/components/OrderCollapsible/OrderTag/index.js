@@ -265,7 +265,8 @@ function OrderTag(props) {
     });
   }, []);
 
-  if (props.title === "Pending")
+  if (title === "Pending")
+
     return (
       <>
         {orders.map((order) => {

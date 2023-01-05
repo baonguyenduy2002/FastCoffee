@@ -13,7 +13,7 @@ function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = async () => {
-    login(userId, password, rememberMe);
+    login(username, password, rememberMe);
     setTimeout(navigate("/dashboard"), 2000);
   };
   const login_background1 = require("../../assets/image/login_background1.jpg");
