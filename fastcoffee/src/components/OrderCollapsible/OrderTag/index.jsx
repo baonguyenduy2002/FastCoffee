@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "react-bootstrap/Card";
 import moment from "moment";
 
@@ -6,264 +6,48 @@ import "./OrderTag.css";
 
 import * as api from "../../../controller/data/order";
 import image from "../../../assets/image/drink_1.jpg";
-import { Component } from "react";
+import { OrderProccesor } from "../../../pages/DashboardPage/Outlets/Order";
 
 function OrderTag(props) {
   const { title } = props;
-  const [orders, setOrders] = useState([]);
-  const [itemList, setItemList] = useState([]);
-  const [menu, setMenu] = useState([
-    {
-      Item_ID: 1,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 2,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 3,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 4,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 5,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 6,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 7,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 8,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 9,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 10,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 11,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 12,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 13,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 14,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 15,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 16,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 17,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 18,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 19,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 20,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 21,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 22,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 23,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 24,
-      Name: "nothing",
-    },
-    {
-      Item_ID: 25,
-      Name: "nothing",
-    },
-  ]);
-  const [state, updateState] = useState("");
+  const { orders, menu, itemList , re_render} = useContext(OrderProccesor)
 
   const handleAccept = (id) => {
     return () => {
+      re_render()
       api.makeAccepted(`api/order/accept/${id}`);
     };
   };
 
   const handleDeny = (id) => {
     return () => {
+      re_render()
       api.makeNext(`api/order/deny/${id}`);
     };
   };
 
   const handleProcess = (id) => {
     return () => {
+      re_render()
       api.makeNext(`api/order/process/${id}`);
     };
   };
 
   const handleReady = (id) => {
     return () => {
+      re_render()
       api.makeNext(`api/order/ready/${id}`);
     };
   };
 
   const handleFinish = (id) => {
     return () => {
+      re_render()
       api.makeNext(`api/order/finish/${id}`);
     };
   };
 
-  useEffect(() => {
-    api
-      .getOrders("api/order/get")
-      .then((res) => (res.data ? setOrders(res.data) : setOrders([])));
-    api
-      .getOrders_Items("api/order/get/order_item")
-      .then((res) => (res.data ? setItemList(res.data) : setItemList([])));
-    api.getOrders_Items("api/item/get/").then((res) =>
-      res.data
-        ? setMenu(res.data)
-        : setMenu([
-            {
-              Item_ID: 1,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 2,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 3,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 4,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 5,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 6,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 7,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 8,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 9,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 10,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 11,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 12,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 13,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 14,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 15,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 16,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 17,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 18,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 19,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 20,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 21,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 22,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 23,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 24,
-              Name: "nothing",
-            },
-            {
-              Item_ID: 25,
-              Name: "nothing",
-            },
-          ])
-    );
-
-    api.getOrders("api/order/get").then((res) => {
-      res.data ? setOrders(res.data) : setOrders([]);
-    });
-  }, []);
+  
 
   if (title === "Pending")
 
