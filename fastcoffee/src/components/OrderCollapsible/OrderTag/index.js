@@ -151,9 +151,9 @@ function OrderTag(props) {
       .getOrders("api/order/get")
       .then((res) => (res.data ? setOrders(res.data) : setOrders([])));
     api
-      .getOrders_Items(`api/order/get/order_item`)
+      .getOrders_Items("api/order/get/order_item")
       .then((res) => (res.data ? setItemList(res.data) : setItemList([])));
-    api.getOrders_Items(`api/item/get/`).then((res) =>
+    api.getOrders_Items("api/item/get/").then((res) =>
       res.data
         ? setMenu(res.data)
         : setMenu([
@@ -263,7 +263,7 @@ function OrderTag(props) {
     api.getOrders("api/order/get").then((res) => {
       res.data ? setOrders(res.data) : setOrders([]);
     });
-  }, [orders]);
+  }, []);
 
   if (props.title === "Pending")
     return (

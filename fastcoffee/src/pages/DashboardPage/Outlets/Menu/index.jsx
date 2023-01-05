@@ -13,31 +13,28 @@ import { useEffect } from "react";
 function Menu() {
   const [shopID, setID] = useState(null)
   const [shopName, setShopName] = useState("N/A");
-  const [shopAddress, setAdress] = useState("N/A");
+  const [shopAddress, setAddress] = useState("N/A");
   const shopImg = require("../../../../assets/image/login_background1.jpg")
 
-  const getShopInfo = async () => {
-    return async () => {
-      try {
-        await api
-          .getShopID()
-          .then((res) => {
-            setID(res.data.id)
-          })
-        await api
-          .getShopData(shopID)
-          .then((res) => {
-            setShopName(res.data.Name)
-            setAdress(res.data.Address)
-          })
-      } catch (error) {
-        console.log(error);
-      }
+  const getShopData= async () => {
+    try {
+      const [firstResponse] = await Promise.all([
+        api.getShopID(),
+      ])
+      setID(firstResponse.data.id)
+      await api.getShopData(firstResponse.data.id).then((res) => {
+        res.data.Name ? setShopName(res.data.Name) : setShopName("Dead database")
+        res.data.Address ? setAddress(res.data.Address) : setAddress("Dead database")
+      })
+    } catch (error) {
+      console.log(error);
     }
   };
 
+  
+
   useEffect(() => {
-    getShopInfo();
+    getShopData();
   }, []);
 
   const add_item_style = {

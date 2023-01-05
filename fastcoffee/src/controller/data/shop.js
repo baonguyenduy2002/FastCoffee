@@ -3,7 +3,7 @@ import instance from "../config/db";
 export const getShopID = async () => {
     // let response = await instance.get("api/item/get");
     // return response;
-    return {"data": {"id": 4}}
+    return {"data": {"id": 1}}
   };
 
 export const getShopData = async (id) => {

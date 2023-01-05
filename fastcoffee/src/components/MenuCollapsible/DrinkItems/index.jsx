@@ -82,7 +82,7 @@ function DrinkItems(props) {
               <div className="delete" onClick={deleteDialog}></div>
               <CreateIcon
                 className="edit"
-                fontSize="small"
+                fontSize="large"
                 onClick={editDialog(initialValues)}
               ></CreateIcon>
               {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
@@ -105,7 +105,7 @@ function DrinkItems(props) {
         <div className="delete" onClick={deleteDialog}></div>
         <CreateIcon
           className="edit"
-          fontSize="small"
+          fontSize="large"
           onClick={editDialog(initialValues)}
         ></CreateIcon>
         {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}

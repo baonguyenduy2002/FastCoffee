@@ -8,7 +8,7 @@ import { login } from "../../controller/service/auth";
 function LoginPage() {
   const navigate = useNavigate();
 
-  const [userId, setUserId] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -26,7 +26,7 @@ function LoginPage() {
         <input
           className="form-input"
           placeholder="User ID"
-          onChange={(e) => setUserId(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className="form-input"

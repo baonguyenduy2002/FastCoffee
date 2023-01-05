@@ -16,7 +16,7 @@ function Home() {
   const [shopAddress, setAddress] = useState("N/A");
   const shopImg = require("../../../../assets/image/login_background1.jpg")
 
-  const getShopID= async () => {
+  const getShopData= async () => {
     try {
       const [firstResponse] = await Promise.all([
         api.getShopID(),
@@ -24,7 +24,7 @@ function Home() {
       setID(firstResponse.data.id)
       await api.getShopData(firstResponse.data.id).then((res) => {
         res.data.Name ? setShopName(res.data.Name) : setShopName("Dead database")
-        res.data.Address ? setShopName(res.data.Address) : setAddress("Dead database")
+        res.data.Address ? setAddress(res.data.Address) : setAddress("Dead database")
       })
     } catch (error) {
       console.log(error);
@@ -34,7 +34,7 @@ function Home() {
   
 
   useEffect(() => {
-    getShopID();
+    getShopData();
   }, []);
 
   return (
@@ -51,9 +51,9 @@ function Home() {
             <span className="Distance">0.2km - </span>
             <span className="Address">{shopAddress}</span>
           </div>
-          <button class="button">
+          {/* <button class="button">
             Opdasdsaasdas
-          </button>
+          </button> */}
         </div>
       </div>
 
