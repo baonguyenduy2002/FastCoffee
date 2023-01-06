@@ -3,14 +3,13 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 
 import * as apiShop from "../../../../controller/data/shop";
-import * as apiDrinks from "../../../../controller/data/drinks"
+import * as apiDrinks from "../../../../controller/data/drinks";
+import * as jwt from "../../../../controller/data/user"
 import { COLORS } from "../../../../assets/constants";
 
 import MenuCollapsible from "../../../../components/MenuCollapsible";
 import DrinkItems from "../../../../components/MenuCollapsible/DrinkItems";
 import { MenuItems } from "../Menu";
-
-import Cookies from 'universal-cookie';
 
 
 
@@ -23,13 +22,11 @@ function Home() {
 
   const getShopData = async () => {
     try {
-      // const [firstResponse] = await Promise.all([
-      //   apiShop.getShopID(),
-      // ])
-      // setID(firstResponse.data.id)
-      setID(1)
-      // await apiShop.getShopData(firstResponse.data.id).then((res) => {
-      await apiShop.getShopData(1).then((res) => {
+      const [firstResponse] = await Promise.all([
+        apiShop.getShopID(),
+      ])
+      setID(firstResponse.data.id)
+      await apiShop.getShopData(firstResponse.data.id).then((res) => {
         res.data.Name ? setShopName(res.data.Name) : setShopName("Dead database")
         res.data.Address ? setAddress(res.data.Address) : setAddress("Dead database")
       })
@@ -40,6 +37,7 @@ function Home() {
 
   useEffect(() => {
     getShopData();
+    jwt.loginToken();
   }, []);
 
   useEffect(() => {
