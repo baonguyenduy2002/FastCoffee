@@ -8,8 +8,10 @@ import { COLORS } from "../../../../assets/constants";
 
 import MenuCollapsible from "../../../../components/MenuCollapsible";
 import DrinkItems from "../../../../components/MenuCollapsible/DrinkItems";
-import { Button } from "@mui/material";
 import { MenuItems } from "../Menu";
+
+import Cookies from 'universal-cookie';
+
 
 
 function Home() {
@@ -19,7 +21,6 @@ function Home() {
   const shopImg = require("../../../../assets/image/login_background1.jpg")
   const [drinkItems, setDrinkItems] = useState([]);
 
-
   const getShopData = async () => {
     try {
       // const [firstResponse] = await Promise.all([
@@ -28,7 +29,7 @@ function Home() {
       // setID(firstResponse.data.id)
       setID(1)
       // await apiShop.getShopData(firstResponse.data.id).then((res) => {
-        await apiShop.getShopData(1).then((res) => {
+      await apiShop.getShopData(1).then((res) => {
         res.data.Name ? setShopName(res.data.Name) : setShopName("Dead database")
         res.data.Address ? setAddress(res.data.Address) : setAddress("Dead database")
       })
