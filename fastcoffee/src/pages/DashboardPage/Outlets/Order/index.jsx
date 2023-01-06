@@ -124,7 +124,7 @@ function Order() {
     setTimeout(api
       .getOrders_Items("api/order/get/order_item")
       .then((res) => (res.data ? setItemList(res.data) : setItemList([]))), 500);
-    setTimeout(api.getOrders_Items("api/item/get/").then((res) =>
+    setTimeout(api.getOrders_Items("api/item/get").then((res) =>
       res.data
         ? setMenu(res.data)
         : setMenu([
