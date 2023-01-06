@@ -14,36 +14,36 @@ function OrderTag(props) {
 
   const handleAccept = (id) => {
     return () => {
-      re_render()
       api.makeAccepted(`api/order/accept/${id}`);
+      re_render()
     };
   };
 
   const handleDeny = (id) => {
     return () => {
-      re_render()
       api.makeNext(`api/order/deny/${id}`);
+      re_render()
     };
   };
 
   const handleProcess = (id) => {
     return () => {
-      re_render()
       api.makeNext(`api/order/process/${id}`);
+      re_render()
     };
   };
 
   const handleReady = (id) => {
     return () => {
-      re_render()
       api.makeNext(`api/order/ready/${id}`);
+      re_render()
     };
   };
 
   const handleFinish = (id) => {
     return () => {
-      re_render()
       api.makeNext(`api/order/finish/${id}`);
+      re_render()
     };
   };
 
