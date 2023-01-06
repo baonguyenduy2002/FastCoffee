@@ -19,7 +19,7 @@ function Menu() {
   const [shopAddress, setAddress] = useState("N/A");
   const shopImg = require("../../../../assets/image/login_background1.jpg")
   const [drinkItems, setDrinkItems] = useState([]);
-  const [renderTrigger, setTrigger] = useState(false)
+  const [renderTrigger, setTrigger] = useState(0)
   
 
   const getShopData = async () => {
@@ -38,10 +38,9 @@ function Menu() {
   };
 
   const re_render = () => {
-    if (renderTrigger)
-      setTrigger(false)
-    else
-      setTrigger(true)
+    if (renderTrigger === 20)
+      setTrigger(0)
+    else setTrigger(renderTrigger + 1)
   }
 
   useEffect(() => {

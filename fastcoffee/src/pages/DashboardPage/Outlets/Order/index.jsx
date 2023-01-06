@@ -11,7 +11,7 @@ export const OrderProccesor = React.createContext();
 
 function Order() {
   const shopImg = require("../../../../assets/image/background_2.jpg");
-  const [renderTrigger, setTrigger] = useState(false);
+  const [renderTrigger, setTrigger] = useState(0);
   const [orders, setOrders] = useState([]);
   const [itemList, setItemList] = useState([]);
   const [menu, setMenu] = useState([
@@ -233,10 +233,9 @@ function Order() {
   }, [renderTrigger]);
 
   const re_render = () => {
-    if (renderTrigger)
-      setTrigger(false)
-    else
-      setTrigger(true)
+    if (renderTrigger === 20)
+      setTrigger(0)
+    else setTrigger(renderTrigger + 1)
   }
 
   return (
