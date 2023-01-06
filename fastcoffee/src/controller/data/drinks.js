@@ -6,7 +6,11 @@ export const getDrinks = async () => {
 };
 
 export const updateDrinks = async (id, data) => {
-  let response = await instance.get("api/item/get");
+  let response = await instance.post(`api/item/update/${id}`, {
+    "name": data.name,
+    "description": data.description,
+    "price": data.price
+  });
   return response;
 };
 

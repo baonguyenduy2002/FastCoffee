@@ -59,10 +59,6 @@ export default function EditDialogs(props) {
 		setOpenAddPopup(false);
 	};
 
-	// const doCreate = async (data) => {
-	// 	handleCreate(data);
-	// };
-
 	return (
 		<CustomDialog
 			PaperProps={{

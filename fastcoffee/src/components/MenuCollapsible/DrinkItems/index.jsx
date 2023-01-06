@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import CreateIcon from "@mui/icons-material/Create";
 
 import "./DrinkItems.css";
 
-import * as api from "../../../controller/data/drinks";
 import { COLORS } from "../../../assets/constants";
 import EditDialogs from "../../Dialog/Dialog";
 import { drinksItemImage } from "../../../assets";
+import { MenuItems } from "../../../pages/DashboardPage/Outlets/Menu";
 
 const formatter = new Intl.NumberFormat("vi-VN", {
   style: "currency",
@@ -20,7 +20,7 @@ const formatter = new Intl.NumberFormat("vi-VN", {
 });
 
 const initialValues = {
-  id: 1,
+  id: 1000,
   name: "hello cafe",
   description: "good coffee for bruh day",
   price: "15000",
@@ -32,10 +32,13 @@ const deleteDialog = () => {
   alert("deleting stuff");
 };
 
+
 function DrinkItems(props) {
-  const [drinkItems, setDrinkItems] = useState([]);
   const [openAddPopup, setOpenAddPopup] = useState(false);
   const [initialFValues, setValue] = useState(initialValues);
+
+
+  const { shopID, drinkItems } = useContext(MenuItems)
 
   const editDialog = (initialValues) => {
     return () => {
@@ -43,27 +46,6 @@ function DrinkItems(props) {
       setValue(initialValues);
     };
   };
-
-  const handleEdit = async (id, data) => {
-    try {
-      await api.updateDrinks(id, data);
-      // await api.getTasks().then((res) => {
-      // 	setTaskList(res);
-      // });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    try {
-      api.getDrinks().then((res) => {
-        res.data ? setDrinkItems(res.data) : setDrinkItems([]);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
 
   return (
     <>
@@ -79,12 +61,16 @@ function DrinkItems(props) {
         return (
           <div key={item.ID}>
             <Card style={{ width: "18rem" }}>
-              <div className="delete" onClick={deleteDialog}></div>
-              <CreateIcon
-                className="edit"
-                fontSize="large"
-                onClick={editDialog(initialValues)}
-              ></CreateIcon>
+              {props.editable &&
+                <>
+                  <div className="delete" onClick={deleteDialog}></div>
+                  <CreateIcon
+                    className="edit"
+                    fontSize="large"
+                    onClick={editDialog(initialValues)}
+                  ></CreateIcon>
+                </>
+              }
               {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
               <Card.Img variant="top" src={drinksItemImage[0].image} alt="File corrupted" />
               <Card.Body className="DrinkInfo">
@@ -102,12 +88,16 @@ function DrinkItems(props) {
       })}
 
       <Card style={{ width: "18rem" }}>
-        <div className="delete" onClick={deleteDialog}></div>
-        <CreateIcon
-          className="edit"
-          fontSize="large"
-          onClick={editDialog(initialValues)}
-        ></CreateIcon>
+        {props.editable &&
+          <>
+            <div className="delete" onClick={deleteDialog}></div>
+            <CreateIcon
+              className="edit"
+              fontSize="large"
+              onClick={editDialog(initialValues)}
+            ></CreateIcon>
+          </>
+        }
         {/* <Card.Img variant="top" src={drinksItemImage.filter(function (el) { return el.id === item.Item_ID })[0].image} alt="File corrupted" /> */}
         <Card.Img variant="top" src={drinksItemImage[0].image} alt="File corrupted" />
         <Card.Body className="DrinkInfo">
@@ -124,12 +114,13 @@ function DrinkItems(props) {
                 openAddPopup={openAddPopup}
                 setOpenAddPopup={setOpenAddPopup}
             /> */}
-
-      <EditDialogs
-        initialValues={initialFValues}
-        openAddPopup={openAddPopup}
-        setOpenAddPopup={setOpenAddPopup}
-      />
+      {props.editable &&
+        <EditDialogs
+          initialValues={initialFValues}
+          openAddPopup={openAddPopup}
+          setOpenAddPopup={setOpenAddPopup}
+        />
+      }
     </>
   );
 }

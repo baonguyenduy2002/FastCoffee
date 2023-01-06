@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -11,6 +11,9 @@ import { Typography } from "@mui/material";
 
 // import RouteDialogs from "./Routelog";
 import "./EditDrink.css";
+import { MenuItems } from "../../pages/DashboardPage/Outlets/Menu";
+import * as api from "../../controller/data/drinks";
+
 
 
 const formatter = new Intl.NumberFormat('vi-VN', {
@@ -27,13 +30,16 @@ function valuetext(value) {
 }
 
 export default function EditDrink(props) {
-    const { dialogState, setDialogState, handleCreate, initialValues } = props;
+    const { setDialogState, initialValues } = props;
+    const { shopID, re_render } = useContext(MenuItems);
     const handleCloseDialog = () => {
         setDialogState(false);
+        re_render();
     };
+    const [itemID, setItemID] = useState(initialValues.id);
     const [price, setPrice] = useState(initialValues.price);
     const [name, setName] = useState(initialValues.name);
-    const [des, setDes] = useState(initialValues.description)
+    const [des, setDes] = useState(initialValues.description);
 
     const handleChangePrice = (event, newValue) => {
         if (typeof newValue === 'number') {
@@ -53,8 +59,12 @@ export default function EditDrink(props) {
 
     //--------------------Haddler
 
-    const doCreate = async (data) => {
-        handleCreate(data);
+    const handleEdit = (id, data) => {
+        try {
+            api.updateDrinks(id, data);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -110,7 +120,7 @@ export default function EditDrink(props) {
                         <Button
                             variant="contained"
                             onClick={() => {
-                                // doCreate(initialFValues);
+                                handleEdit(itemID, { "name": name, "description": des, "price": price });
                                 handleCloseDialog();
                             }}
                         >

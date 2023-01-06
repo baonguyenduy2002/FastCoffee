@@ -8,7 +8,6 @@ export const getShopID = async () => {
 
 export const getShopData = async (id) => {
   let response = await instance.get(`api/shop/get/${id}`);
-  
   return response;
 };
 
