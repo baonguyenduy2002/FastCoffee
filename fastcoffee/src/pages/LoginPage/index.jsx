@@ -13,10 +13,10 @@ function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = async () => {
-    login(username, password, rememberMe);
+    await login(username, password, rememberMe);
     setTimeout(navigate("/dashboard"), 2000);
   };
-  const login_background1 = require("../../assets/image/login_background1.jpg");
+  // const login_background1 = require("../../assets/image/login_background1.jpg");
   return (
     <div className="container">
       <h1 className="title">Sign in</h1>

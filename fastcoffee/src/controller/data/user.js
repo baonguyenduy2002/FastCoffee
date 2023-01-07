@@ -1,21 +1,16 @@
 import instance from "../config/db";
-import Cookies from "universal-cookie";
 
 export const userModel = {
   userId: "fastcoffee",
   password: "123",
 };
 
-const cookies = new Cookies();
+export const key = "K3y_F4k3_D0nt_63t_1t"
 
-export const loginToken = async () => {
-    // let response = await instance.get("api/item/get");
-    // return response;
-    let response = await instance.post(`api/employee/login`, {email: "duybao@gmail.com", password: "db123"}).then((res) => {
-      cookies.set('token',res.data.token, { path: '/' });
-    });
-    return response;
-  };
+export const loginToken = async (email, password, rememberMe) => {
+  let response = await instance.post(`api/employee/login`, { email: email, password: password, rememberMe: rememberMe });
+  return response;
+};
 
 export const getShopData = async (id) => {
   let response = await instance.get(`api/shop/get/${id}`);

@@ -4,8 +4,6 @@ import "./Home.css";
 
 import * as apiShop from "../../../../controller/data/shop";
 import * as apiDrinks from "../../../../controller/data/drinks";
-import * as jwt from "../../../../controller/data/user"
-import { COLORS } from "../../../../assets/constants";
 
 import MenuCollapsible from "../../../../components/MenuCollapsible";
 import DrinkItems from "../../../../components/MenuCollapsible/DrinkItems";
@@ -37,7 +35,6 @@ function Home() {
 
   useEffect(() => {
     getShopData();
-    jwt.loginToken();
   }, []);
 
   useEffect(() => {
@@ -61,7 +58,7 @@ function Home() {
           <div className="ShopInfo">
             <div className="ShopName">{shopName}</div>
             <div className="ShopLocation">
-              <span className="Distance">0.2km - </span>
+              <span className="Distance">0.23km - </span>
               <span className="Address">{shopAddress}</span>
             </div>
             {/* <button class="button">

@@ -1,25 +1,29 @@
-import { userModel } from "../data/user";
+import { loginToken } from "../data/user";
+import Cookies from "universal-cookie";
 
-export const login = (userId, password, rememberMe) => {
+export const cookies = new Cookies();
+
+export const login = async (email, password, rememberMe) => {
   const error = {
     message: "Invalid userid or password",
     statusCode: 401,
     statusText: "Unauthorized",
   };
 
-  const storage = rememberMe ? localStorage : sessionStorage;
   try {
-    if (userId !== userModel.userId || password !== userModel.password) {
-      throw error;
-    }
-
-    storage.setItem("isAuthenticated", true);
+    await loginToken(email, password, rememberMe).then((res) => {
+      if (res.status === 401)
+        throw error
+      else if (res.data.token)
+        cookies.set('token', res.data.token, { path: '/', sameSite: 'none' });
+      else
+        throw error
+    });
   } catch (error) {
     console.log(error);
   }
 };
 
 export const logout = () => {
-  localStorage.removeItem("isAuthenticated");
-  sessionStorage.removeItem("isAuthenticated");
+  cookies.remove('token');
 };
