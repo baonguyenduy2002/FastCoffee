@@ -5,8 +5,8 @@ import CreateIcon from "@mui/icons-material/Create";
 
 import "./DrinkItems.css";
 
-import { COLORS } from "../../../assets/constants";
-import EditDialogs from "../../Dialog/Dialog";
+// import { COLORS } from "../../../assets/constants";
+import { EditDialogs, DeleteDialogs } from "../../Dialog/Dialog";
 import { drinksItemImage } from "../../../assets";
 import { MenuItems } from "../../../pages/DashboardPage/Outlets/Menu";
 
@@ -28,21 +28,26 @@ const initialValues = {
   avalability: 15,
 };
 
-const deleteDialog = () => {
-  alert("deleting stuff");
-};
 
 
 function DrinkItems(props) {
-  const [openAddPopup, setOpenAddPopup] = useState(false);
+  const [openEditPopup, setOpenEditPopup] = useState(false);
+  const [openDeletePopup, setOpenDeletePopup] = useState(false);
   const [initialFValues, setValue] = useState(initialValues);
 
 
-  const { shopID, drinkItems } = useContext(MenuItems)
+  const { drinkItems } = useContext(MenuItems)
 
   const editDialog = (initialValues) => {
     return () => {
-      setOpenAddPopup(true);
+      setOpenEditPopup(true);
+      setValue(initialValues);
+    };
+  };
+
+  const deleteDialog = (initialValues) => {
+    return () => {
+      setOpenDeletePopup(true);
       setValue(initialValues);
     };
   };
@@ -63,7 +68,7 @@ function DrinkItems(props) {
             <Card style={{ width: "18rem" }}>
               {props.editable &&
                 <>
-                  <div className="delete" onClick={deleteDialog}></div>
+                  <div className="delete" onClick={deleteDialog(initialValues)}></div>
                   <CreateIcon
                     className="edit"
                     fontSize="large"
@@ -117,20 +122,27 @@ function DrinkItems(props) {
       {props.editable &&
         <EditDialogs
           initialValues={initialFValues}
-          openAddPopup={openAddPopup}
-          setOpenAddPopup={setOpenAddPopup}
+          openPopup={openEditPopup}
+          setOpenPopup={setOpenEditPopup}
+        />
+      }
+      {props.editable &&
+        <DeleteDialogs
+          initialValues={initialFValues}
+          openPopup={openDeletePopup}
+          setOpenPopup={setOpenDeletePopup}
         />
       }
     </>
   );
 }
 
-const add_item_style = {
-  border: "3px solid " + COLORS.darkgray,
-  color: COLORS.darkgray,
-  borderRadius: "50%",
-  height: "60px",
-  width: "60px",
-};
+// const add_item_style = {
+//   border: "3px solid " + COLORS.darkgray,
+//   color: COLORS.darkgray,
+//   borderRadius: "50%",
+//   height: "60px",
+//   width: "60px",
+// };
 
 export default DrinkItems;

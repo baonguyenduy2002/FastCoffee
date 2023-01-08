@@ -14,6 +14,14 @@ export const updateDrinks = async (id, data) => {
   return response;
 };
 
+export const deleteDrink = async (id) => {
+  let response = await instance.post(`api/item/delete`, {
+    "item_id": id,
+  });
+  return response;
+};
+
+
 // export const drinkItems = [{
 //     'Item_ID': 1,
 //     'Name': 'Ristretto Bianco',

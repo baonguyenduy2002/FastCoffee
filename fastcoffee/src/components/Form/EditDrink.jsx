@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import Slider from '@mui/material/Slider';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -31,12 +30,12 @@ function valuetext(value) {
 
 export default function EditDrink(props) {
     const { setDialogState, initialValues } = props;
-    const { shopID, re_render } = useContext(MenuItems);
+    const { re_render } = useContext(MenuItems);
     const handleCloseDialog = () => {
         setDialogState(false);
         re_render();
     };
-    const [itemID, setItemID] = useState(initialValues.id);
+    const itemID = initialValues.id;
     const [price, setPrice] = useState(initialValues.price);
     const [name, setName] = useState(initialValues.name);
     const [des, setDes] = useState(initialValues.description);
@@ -59,9 +58,9 @@ export default function EditDrink(props) {
 
     //--------------------Haddler
 
-    const handleEdit = (id, data) => {
+    const handleEdit = (data) => {
         try {
-            api.updateDrinks(id, data);
+            api.updateDrinks(itemID, data);
         } catch (error) {
             console.log(error);
         }
@@ -120,7 +119,7 @@ export default function EditDrink(props) {
                         <Button
                             variant="contained"
                             onClick={() => {
-                                handleEdit(itemID, { "name": name, "description": des, "price": price });
+                                handleEdit({ "name": name, "description": des, "price": price });
                                 handleCloseDialog();
                             }}
                         >

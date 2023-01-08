@@ -9,14 +9,15 @@ import CloseIcon from "@mui/icons-material/Close";
 
 
 import EditDrink from "../Form/EditDrink";
+import DeleteDrink from "../Form/DeleteConfirm";
 
 const CustomDialog = styled(Dialog)(({ theme }) => ({
-	"& .MuiDialogContent-root": {
-		padding: theme.spacing(2),
-	},
-	"& .MuiDialogActions-root": {
-		padding: theme.spacing(1),
-	},
+	// "& .MuiDialogContent-root": {
+	// 	padding: theme.spacing(2),
+	// },
+	// "& .MuiDialogActions-root": {
+	// 	padding: theme.spacing(1),
+	// },
 	"& .MuiBackdrop-root": {
 		backgroundColor: 'rgba(0,0,0,0.3)',
 	}
@@ -51,12 +52,12 @@ CustomDialogTitle.propTypes = {
 	onClose: PropTypes.func.isRequired,
 };
 
-export default function EditDialogs(props) {
+export function EditDialogs(props) {
 	// const { openAddPopup, setOpenAddPopup, handleCreate } = props;
-	const { openAddPopup, setOpenAddPopup, initialValues } = props;
+	const { openPopup, setOpenPopup, initialValues } = props;
 
 	const handleClose = () => {
-		setOpenAddPopup(false);
+		setOpenPopup(false);
 	};
 
 	return (
@@ -70,7 +71,7 @@ export default function EditDialogs(props) {
 			maxWidth="lg"
 			onClose={handleClose}
 			aria-labelledby="customized-dialog-title"
-			open={openAddPopup}
+			open={openPopup}
 		>
 			<CustomDialogTitle id="customized-dialog-title" onClose={handleClose}>
 				Edit Drinks
@@ -84,13 +85,50 @@ export default function EditDialogs(props) {
 				/> */}
 
 				<DialogContent>
-					<EditDrink 
+					<EditDrink
 						initialValues={initialValues}
-						dialogState={openAddPopup}
-						setDialogState={setOpenAddPopup}
+						dialogState={openPopup}
+						setDialogState={setOpenPopup}
 					/>
 				</DialogContent>
 			</span>
+		</CustomDialog>
+	);
+}
+
+export function DeleteDialogs(props) {
+	// const { openAddPopup, setOpenAddPopup, handleCreate } = props;
+	const { openPopup, setOpenPopup, initialValues } = props;
+
+	const handleClose = () => {
+		setOpenPopup(false);
+	};
+
+	return (
+		<CustomDialog
+			PaperProps={{
+				style: { borderRadius: 20 },
+			}}
+			// PaperComponent ={{
+			// 	style: { background: "transparent" },
+			// }}
+			maxWidth="lg"
+			onClose={handleClose}
+			aria-labelledby="customized-dialog-title"
+			open={openPopup}
+		>
+			<CustomDialogTitle id="customized-dialog-title" onClose={handleClose}>
+				Delete Drink
+			</CustomDialogTitle>
+			{/* <span style={{ marginLeft: 100, paddingBottom: 25 }}> */}
+			<DialogContent>
+				<DeleteDrink
+					initialValues={initialValues}
+					dialogState={openPopup}
+					setDialogState={setOpenPopup}
+				/>
+			</DialogContent>
+
 		</CustomDialog>
 	);
 }
